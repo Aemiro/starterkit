@@ -206,7 +206,7 @@ All variables are defined in `.env.example`. Copy it to `.env` before starting.
 | `POSTGRES_PORT`           | PostgreSQL port              | `5432`         |
 | `POSTGRES_USER`           | Database user                | `postgres`     |
 | `POSTGRES_PASSWORD`       | Database password            | `postgres`     |
-| `POSTGRES_DB`             | Database name                | `chaindocs`    |
+| `POSTGRES_DB`             | Database name                | `starterkit`    |
 | `POSTGRES_CONTAINER_NAME` | Docker container name        | —              |
 | `POSTGRES_IMAGE`          | Docker image tag             | `postgres:17`  |
 | `DATABASE_SCHEMA`         | PostgreSQL schema            | `public`       |
@@ -221,7 +221,7 @@ All variables are defined in `.env.example`. Copy it to `.env` before starting.
 | `MINIO_USE_SSL`        | Enable SSL for MinIO                | `false`              |
 | `MINIO_ACCESS_KEY`     | MinIO access key (root user)        | `admin`              |
 | `MINIO_SECRET_KEY`     | MinIO secret key (root password)    | `password`           |
-| `MINIO_BUCKET_NAME`    | Default bucket name                 | `chaindocs`          |
+| `MINIO_BUCKET_NAME`    | Default bucket name                 | `starterkit`          |
 | `MINIO_IMAGE`          | Docker image tag                    | `minio/minio:latest` |
 | `MINIO_CONTAINER_NAME` | Docker container name               | —                    |
 
@@ -1030,4 +1030,4 @@ All services include Docker health checks to ensure dependent services are ready
 
 ---
 
-Built with ❤️ by [Kifiya Financial Technology](http://kifiya.com/)
+Built with ❤️ by [Aemiro Mekete](https://www.linkedin.com/in/aemiro)

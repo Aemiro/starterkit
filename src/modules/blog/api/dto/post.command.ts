@@ -10,6 +10,7 @@ export class CreatePostCommand {
   @IsNotEmpty()
   description!: string;
   currentUser?: CurrentUserDto;
+  correlationId?: string;
 
   static toEntity(command: CreatePostCommand): PostEntity {
     const entity = new PostEntity();
@@ -26,6 +27,7 @@ export class UpdatePostCommand extends PartialType(CreatePostCommand) {
   })
   @IsNotEmpty()
   id!: string;
+  correlationId?: string;
 }
 export class ArchivePostCommand {
   @ApiProperty({
@@ -37,4 +39,5 @@ export class ArchivePostCommand {
   @IsNotEmpty()
   reason?: string;
   currentUser?: CurrentUserDto;
+  correlationId?: string;
 }

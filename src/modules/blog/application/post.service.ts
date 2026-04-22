@@ -17,6 +17,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { AppLogger } from '@observability/logger.service';
 import { Repository } from 'typeorm';
 @Injectable()
 export class PostService {
@@ -24,7 +25,8 @@ export class PostService {
     @InjectRepository(PostEntity)
     private postTypeormRepository: Repository<PostEntity>,
     private readonly postRepository: PostRepository,
-  ) {}
+    private readonly logger: AppLogger,
+  ) { }
   async createPost(command: CreatePostCommand): Promise<PostResponse> {
     const postDomain = CreatePostCommand.toEntity(command);
     if (
@@ -34,6 +36,16 @@ export class PostService {
       throw new BadRequestException(`Post already exist with this title`);
     }
     const post = await this.postRepository.insert(postDomain);
+    // it must be json data for better log management and querying in log management tools
+    this.logger.log(
+      'PostService',
+      `Post created with id ${post.id}`,
+      command?.currentUser?.id || 'anonymous',
+      {
+        postId: post.id,
+        title: post.title,
+      },
+    );
     return PostResponse.toResponse(post);
   }
   async updatePost(command: UpdatePostCommand): Promise<PostResponse> {

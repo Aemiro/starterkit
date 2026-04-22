@@ -27,6 +27,7 @@
       "@user/*": ["./src/modules/user/*"],
       "@blog/*": ["./src/modules/blog/*"],
       "@database/*": ["./src/database/*"],
+      "@observability/*": ["src/observability/*"]
     }
   }
 }

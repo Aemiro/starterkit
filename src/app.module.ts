@@ -5,6 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import * as dotenv from 'dotenv';
 import { UserModule } from '@user/user.module';
+import { ObservabilityModule } from '@observability/observability.module';
+import { PrometheusModule } from '@willsoto/nestjs-prometheus';
+
 dotenv.config({ path: '.env' });
 console.log(
   'Database Host:',
@@ -34,6 +37,8 @@ console.log('Database Schema:', process.env.DATABASE_SCHEMA);
     }),
     BlogModule,
     UserModule,
+    ObservabilityModule,
+    PrometheusModule.register(),
   ],
   controllers: [],
   providers: [],

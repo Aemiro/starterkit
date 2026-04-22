@@ -15,6 +15,7 @@ import {
   Post,
   Put,
   Query,
+  Req,
 } from '@nestjs/common';
 import {
   ApiExtraModels,
@@ -61,7 +62,9 @@ export class PostController {
   async createPost(
     @CurrentUser() currentUser: CurrentUserDto,
     @Body() createPostCommand: CreatePostCommand,
+    @Req() req: any,
   ) {
+    createPostCommand.correlationId = req.correlationId;
     createPostCommand.currentUser = currentUser;
     return await this.postService.createPost(createPostCommand);
   }
@@ -70,7 +73,9 @@ export class PostController {
   async updatePost(
     @CurrentUser() currentUser: CurrentUserDto,
     @Body() updatePostCommand: UpdatePostCommand,
+    @Req() req: any,
   ) {
+    updatePostCommand.correlationId = req.correlationId;
     updatePostCommand.currentUser = currentUser;
     return await this.postService.updatePost(updatePostCommand);
   }
@@ -79,7 +84,9 @@ export class PostController {
   async archivePost(
     @CurrentUser() currentUser: CurrentUserDto,
     @Body() archiveCommand: ArchivePostCommand,
+    @Req() req: any,
   ) {
+    archiveCommand.correlationId = req.correlationId;
     archiveCommand.currentUser = currentUser;
     return await this.postService.archivePost(archiveCommand);
   }
