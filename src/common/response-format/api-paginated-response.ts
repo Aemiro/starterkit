@@ -11,6 +11,7 @@ export const ApiPaginatedResponse = <TModel extends Type<any>>(
           { $ref: getSchemaPath(DataResponseFormat) },
           {
             properties: {
+              success: { type: 'boolean', example: true },
               data: {
                 type: 'array',
                 items: { $ref: getSchemaPath(model) },

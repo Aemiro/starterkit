@@ -52,7 +52,6 @@ export class CollectionQuery {
   searchFrom?: string[];
 
   @ApiProperty()
-  // @Transform(({ value }) => (Array.isArray(value) ? value : Array(value)))
   @Transform(({ value }) => {
     if (!value) return [];
 
@@ -65,7 +64,7 @@ export class CollectionQuery {
           return {
             field,
             operator,
-            value: isNaN(val as any) ? val : Number(val),
+            value: isNaN(val) ? val : Number(val),
           };
         }
         return item; // if it’s already an object
